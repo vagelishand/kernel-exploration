@@ -70,10 +70,11 @@ print('y train:', str(y_train.shape))
 print('y test:', str(y_test.shape))
 
 
-#Logistic regression with default settings
-classifier = OneVsRestClassifier(SVC(kernel='linear', probability=True))
-y_score = classifier.fit(X_test, y_train).decision_function(X_test)
-print(y_score)
+#create classifier
+#classifier = OneVsRestClassifier(SVC(kernel='linear', probability=True))
+classifier = svm.LinearSVC(kernel='linear', random_state=0)
+classifier.fit(X_train, y_train)
+y_score = classifier.decision_function(X_test)
 
 '''
 # Compute ROC curve and ROC area for each class
